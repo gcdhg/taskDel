@@ -1,12 +1,12 @@
 // const path = require("path");
 const { promises: fs } = require("fs");
+const path = require("path");
 
 const saveDataTofile = async (data) => {
   try {
-    await fs.writeFile(
-      "/home/gcdhg/project/git/taskDel/res/responds.json",
-      data
-    );
+    const rootpath = __dirname.replace("/helpers", "");
+    const filepath = path.join(rootpath, '/res/responds.json');
+    await fs.writeFile(filepath, data);
   } catch (err) {
     console.log(err);
     throw err;

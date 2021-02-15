@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 const { URL: Url } = require("url");
 const { promises: fs } = require("fs");
+const path = require("path");
 
 const { formatMatrix } = require("../helpers/formatMatrix");
 const { address } = require("../helpers/zeroMatrixAddress");
@@ -29,10 +30,9 @@ it("check that matrix is generated", async () => {
   // check strings
   expect(JSON.stringify(res.output)).toBe(JSON.stringify(checkMatrix));
 
+  const rootpath = __dirname.replace("/__test__", "");
+  const filepath = path.join(rootpath, "/res/responds.json");
   // check that data saved in file is valid
-  let data = await fs.readFile(
-    "/home/gcdhg/project/git/taskDel/res/responds.json",
-    "utf-8"
-  );
+  let data = await fs.readFile(filepath, "utf-8");
   expect(JSON.stringify(res)).toBe(data.toString());
 });
