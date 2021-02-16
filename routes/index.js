@@ -33,7 +33,7 @@ router.get("/matrix", async function (req, res, _next) {
     output: matrix,
   };
 
-  await saveDataTofile(JSON.stringify(response, null))
+  await saveDataTofile(JSON.stringify(response, null));
 
   res.status(200).json(response);
 });

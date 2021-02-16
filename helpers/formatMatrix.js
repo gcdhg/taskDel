@@ -62,9 +62,10 @@ const replace = (row, strategy) => {
       strategy[index].forEach((zeros) => {
         const start = zeros.index;
         const end = start + zeros.length;
-        for (let i = start; i < end; i++) {
-          row[i] = 0;
-        }
+        row.fill(0, start, end);
+        // for (let i = start; i < end; i++) {
+        //   row[i] = 0;
+        // }
       });
     }
     return row;
